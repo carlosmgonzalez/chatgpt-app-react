@@ -1,16 +1,25 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import {
-  AssistantPage,
-  AudioToTextPage,
-  ImageGenerationPage,
-  ImageTunningPage,
-  OrthographyPage,
-  ProsConsPage,
-  ProsConsStreamPage,
-  TextToAudioPage,
-  TranslatePage,
-} from "../pages";
+// import {
+//   AssistantPage,
+//   AudioToTextPage,
+//   ImageGenerationPage,
+//   ImageTunningPage,
+//   OrthographyPage,
+//   ProsConsPage,
+//   ProsConsStreamPage,
+//   TextToAudioPage,
+//   TranslatePage,
+// } from "../pages";
 import { DashboardLayout } from "../layouts/DashboardLayout";
+import { OrthographyPage } from "../pages/OrthographyPage";
+import { ProsConsPage } from "../pages/ProsConsPage";
+import { ProsConsStreamPage } from "../pages/ProsConsStreamPage";
+import { TranslatePage } from "../pages/TranslatePage";
+import { TextToAudioPage } from "../pages/TextToAudioPage";
+import { ImageGenerationPage } from "../pages/ImageGenerationPage";
+import { ImageTunningPage } from "../pages/ImageTunningPage";
+import { AudioToTextPage } from "../pages/AudioToTextPage";
+import { AssistantPage } from "../pages/AssistantPage";
 
 export const menuRoutes = [
   {

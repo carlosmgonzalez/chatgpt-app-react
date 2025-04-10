@@ -1,33 +1,32 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
+
+type Option = {
+  id: string;
+  text: string;
+};
 
 interface Props {
   onSendMessage: (message: string) => void;
   placeholder?: string;
   disableCorrections?: boolean;
-  accept?: string;
+  options: Option[];
 }
 
-export const MessageBoxFile = ({
+export const MessageBoxSelect = ({
   onSendMessage,
   placeholder,
   disableCorrections = false,
-  accept,
+  options,
 }: Props) => {
   const [message, setMessage] = useState("");
-  const inputFileRef = useRef<HTMLInputElement>(null);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedOption, setSelectedOption] = useState("");
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (message.trim().length === 0) return;
     console.log(message);
-    console.log(selectedFile);
     onSendMessage(message);
     setMessage("");
-  };
-
-  const onPress = () => {
-    inputFileRef.current?.click();
   };
 
   return (
@@ -35,22 +34,6 @@ export const MessageBoxFile = ({
       onSubmit={handleSendMessage}
       className="flex flex-row gap-2 items-center h-16 rounded-md bg-black/50 w-full px-4"
     >
-      <div>
-        <button
-          onClick={onPress}
-          type="button"
-          className="flex items-center justify-center text-white hover:text-gray-400"
-        >
-          <i className="fa-solid fa-paperclip text-xl" />
-        </button>
-        <input
-          type="file"
-          className="hidden"
-          ref={inputFileRef}
-          accept={accept}
-          onChange={(e) => setSelectedFile(e.target.files?.item(0) || null)}
-        />
-      </div>
       <div className="grow">
         <div className="relative w-full">
           <input
@@ -66,6 +49,18 @@ export const MessageBoxFile = ({
           />
         </div>
       </div>
+      <select
+        name="select"
+        className="border border-neutral-800 rounded-md text-white focus:outline-none h-10 px-2"
+        value={selectedOption}
+        onChange={(e) => setSelectedOption(e.target.value)}
+      >
+        {options.map((option) => (
+          <option className="bg-black" key={option.id} value={option.text}>
+            {option.text}
+          </option>
+        ))}
+      </select>
       <button
         type="submit"
         className="justify-center items-center w-10 h-10 bg-neutral-200 font-bold rounded-full  hover:bg-neutral-400"
