@@ -1,33 +1,31 @@
 import { API_URL } from "../api/api-chat-gpt";
 
-export const prosConsStreamUseCase = async (
+export const translateUseCase = async (
   prompt: string,
-  abortSignal: AbortSignal,
+  lang: string,
   callback: (chunk: string) => void
 ) => {
   try {
-    const res = await fetch(`${API_URL}/pros-cons-stream`, {
+    const res = await fetch(`${API_URL}/translate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      signal: abortSignal,
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({
+        prompt,
+        lang,
+      }),
     });
 
-    if (!res.ok) throw new Error("No readable stream available");
+    if (!res.ok) throw new Error();
 
     const reader = res.body!.getReader();
-    if (!reader) throw new Error("Problem with the reader");
-
     const decoder = new TextDecoder();
 
     while (true) {
-      const { done, value } = await reader.read();
+      const { value, done } = await reader.read();
 
-      if (done) {
-        break;
-      }
+      if (done) break;
 
       const chunk = decoder.decode(value, { stream: true });
       callback(chunk);

@@ -42,6 +42,15 @@
   .chat-messages {
     @apply flex flex-col h-full overflow-x-auto mb-4;
   }
+
+  .custom-select {
+    @apply bg-transparent border border-neutral-800 rounded-md text-white focus:outline-none h-10 px-2;
+  }
+
+  .custom-select option:hover,
+  .custom-select option:focus {
+    @apply bg-neutral-800;
+  }
 }
 
 @layer utilities {

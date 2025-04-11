@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GptMessage } from "../components/chat/GptMessage";
 import { MyMessage } from "../components/chat/MyMessage";
 import { MessageBox } from "../components/chat/MessageBox";
@@ -11,34 +11,47 @@ interface Message {
 }
 
 export const ProsConsStreamPage = () => {
+  const abortController = useRef(new AbortController());
+  const isRunning = useRef(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const handlePost = async (text: string) => {
+    if (isRunning.current) {
+      abortController.current.abort();
+      abortController.current = new AbortController();
+    }
+
     setIsLoading(true);
+    isRunning.current = true;
     setMessages((prevMsg) => [...prevMsg, { isGpt: false, text }]);
 
     setMessages((prevMsg) => [...prevMsg, { isGpt: true, text: "" }]);
     let streamMessage = "";
 
     setIsLoading(false);
+    const response = await prosConsStreamUseCase(
+      text,
+      abortController.current.signal,
+      (chunk) => {
+        streamMessage += chunk;
+        setMessages((prevMsg) => {
+          const newMessages = [...prevMsg];
+          newMessages[newMessages.length - 1].text = streamMessage;
+          return newMessages;
+        });
+      }
+    );
 
-    const response = await prosConsStreamUseCase(text, (chunk) => {
-      streamMessage += chunk;
-      setMessages((prevMsg) => {
-        const newMessages = [...prevMsg];
-        newMessages[newMessages.length - 1].text = streamMessage;
-        return newMessages;
-      });
-    });
-
-    if (!response.ok) {
+    if (!response.ok && !isRunning.current) {
       setError("Something went wrong");
       setIsLoading(false);
       return;
     }
 
+    isRunning.current = false;
     setError(null);
   };
 
