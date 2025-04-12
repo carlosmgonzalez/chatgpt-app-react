@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { GptMessage } from "../components/chat/GptMessage";
 import { MyMessage } from "../components/chat/MyMessage";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { MessageBoxSelect } from "../components/chat/MessageBoxSelect";
 import { textToAudioUseCase } from "../../core/use-cases/text-to-audio.use-case";
+import { GptAudioMessage } from "../components/chat/GptAudioMessage";
 
 interface Message {
   text: string;
@@ -38,7 +38,6 @@ export const TextToAudioPage = () => {
     setIsLoading(true);
     setMessages((prevMsg) => [...prevMsg, { isGpt: false, text }]);
 
-    setIsLoading(false);
     const response = await textToAudioUseCase(text, selectedOption);
 
     if (!response.ok) {
@@ -47,8 +46,10 @@ export const TextToAudioPage = () => {
       return;
     }
 
-    // const { audioUrl } = response;
+    const { audioUrl } = response;
+    setMessages((prevMsg) => [...prevMsg, { isGpt: true, text: audioUrl! }]);
 
+    setIsLoading(false);
     setError(null);
   };
 
@@ -63,7 +64,7 @@ export const TextToAudioPage = () => {
         <div className="grid grid-cols-12 gap-y-2">
           {messages.map((message, i) =>
             message.isGpt ? (
-              <GptMessage text={message.text} key={i} />
+              <GptAudioMessage audio={message.text} key={i} />
             ) : (
               <MyMessage text={message.text} key={i} />
             )
@@ -74,7 +75,7 @@ export const TextToAudioPage = () => {
       <MessageBoxSelect
         options={options}
         onSendMessage={handlePost}
-        placeholder="Message pros and cons"
+        placeholder="Message to audio"
       />
     </div>
   );
