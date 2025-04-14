@@ -1,7 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 
 interface Props {
-  onSendMessage: (message: string) => void;
+  onSendMessage: (message: string, audioFile: File) => void;
   placeholder?: string;
   disableCorrections?: boolean;
   accept?: string;
@@ -19,10 +19,9 @@ export const MessageBoxFile = ({
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (message.trim().length === 0) return;
-    console.log(message);
-    console.log(selectedFile);
-    onSendMessage(message);
+    if (!selectedFile) return;
+    onSendMessage(message, selectedFile);
+    setSelectedFile(null);
     setMessage("");
   };
 
@@ -66,6 +65,7 @@ export const MessageBoxFile = ({
           />
         </div>
       </div>
+      {selectedFile && <span>{`${selectedFile.name.slice(0, 15)}`}</span>}
       <button
         type="submit"
         className="justify-center items-center w-10 h-10 bg-neutral-200 font-bold rounded-full  hover:bg-neutral-400"
