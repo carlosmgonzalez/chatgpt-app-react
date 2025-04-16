@@ -4,8 +4,6 @@ import { MyMessage } from "../components/chat/MyMessage";
 import { MessageBox } from "../components/chat/MessageBox";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { orthographyUseCase } from "../../core/use-cases/orthography.use-case";
-// import { MessageBoxFile } from "../components/chat/MessageBoxFile";
-// import { MessageBoxSelect } from "../components/chat/MessageBoxSelect";
 
 interface Message {
   text: string;

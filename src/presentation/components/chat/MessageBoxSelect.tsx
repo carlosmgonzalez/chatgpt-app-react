@@ -19,7 +19,7 @@ export const MessageBoxSelect = ({
   options,
 }: Props) => {
   const [message, setMessage] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState(options[0].text);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustTextAreaHeight = () => {

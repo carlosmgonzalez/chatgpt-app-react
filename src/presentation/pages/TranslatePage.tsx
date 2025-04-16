@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { GptMessage } from "../components/chat/GptMessage";
 import { MyMessage } from "../components/chat/MyMessage";
 import { TypingLoader } from "../components/chat/TypingLoader";
@@ -30,27 +30,16 @@ const langOptions = [
 ];
 
 export const TranslatePage = () => {
-  const abortController = useRef(new AbortController());
-  const isRunning = useRef(false);
-
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const handlePost = async (text: string, selectedOption: string) => {
-    if (isRunning.current) {
-      abortController.current.abort();
-      abortController.current = new AbortController();
-    }
-
     setIsLoading(true);
-    isRunning.current = true;
     setMessages((prevMsg) => [...prevMsg, { isGpt: false, text }]);
 
     setMessages((prevMsg) => [...prevMsg, { isGpt: true, text: "" }]);
     let streamMessage = "";
-
-    // abortController.current.signal,
 
     setIsLoading(false);
     const response = await translateUseCase(text, selectedOption, (chunk) => {
@@ -62,13 +51,12 @@ export const TranslatePage = () => {
       });
     });
 
-    if (!response.ok && !isRunning.current) {
+    if (!response.ok) {
       setError("Something went wrong");
       setIsLoading(false);
       return;
     }
 
-    isRunning.current = false;
     setError(null);
   };
 
@@ -94,7 +82,7 @@ export const TranslatePage = () => {
       <MessageBoxSelect
         options={langOptions}
         onSendMessage={handlePost}
-        placeholder="Message pros and cons"
+        placeholder="Translate message"
       />
     </div>
   );
