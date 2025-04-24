@@ -6,7 +6,10 @@ export const audioToTextUseCase = async (prompt: string, audioFile: File) => {
     formData.append("prompt", prompt);
     formData.append("file", audioFile);
 
-    const { data, status } = await apiChatGpt.post("/audio-to-text", formData);
+    const { data, status } = await apiChatGpt.post(
+      "/chat-gpt/audio-to-text",
+      formData
+    );
 
     if (!data || status !== 201)
       throw new Error("Something went wrong when call audio to text");

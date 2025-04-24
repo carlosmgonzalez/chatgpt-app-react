@@ -6,7 +6,7 @@ export const translateUseCase = async (
   callback: (chunk: string) => void
 ) => {
   try {
-    const res = await fetch(`${API_URL}/translate`, {
+    const res = await fetch(`${API_URL}/chat-gpt/translate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

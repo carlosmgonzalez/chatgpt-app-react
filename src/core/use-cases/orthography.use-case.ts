@@ -1,10 +1,9 @@
 import { type OrthographyResponse } from "../../interfaces/orthography.interface";
+import { API_URL } from "../api/api-chat-gpt";
 
 export const orthographyUseCase = async (prompt: string) => {
-  const URL = import.meta.env.VITE_URL_API;
-
   try {
-    const res = await fetch(`${URL}/check-orthography`, {
+    const res = await fetch(`${API_URL}/chat-gpt/check-orthography`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

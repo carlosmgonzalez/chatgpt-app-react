@@ -16,9 +16,9 @@ export const DashboardLayout = () => {
         ))}
       </nav>
 
-      <section className="m-2 sm:mx-0 sm:my-0 flex flex-col w-full h-[calc(100vh-50px)] bg-neutral-800 bg-opacity-10 p-2 rounded-md">
+      <section className="m-2 sm:mx-0 sm:my-0 flex flex-col w-full h-[calc(100vh-50px)] bg-neutral-800 bg-opacity-10 rounded-md">
         <div className="flex flex-row h-full">
-          <div className="flex flex-col flex-auto h-full p-1">
+          <div className="flex flex-col flex-auto h-full">
             <Outlet />
           </div>
         </div>

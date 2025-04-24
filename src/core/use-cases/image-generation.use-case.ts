@@ -3,9 +3,12 @@ import { apiChatGpt } from "../api/api-chat-gpt";
 
 export const imageGenerationUseCase = async (prompt: string) => {
   try {
-    const res = await apiChatGpt.post<ImageGenerationRes>("/image-generation", {
-      prompt,
-    });
+    const res = await apiChatGpt.post<ImageGenerationRes>(
+      "/chat-gpt/image-generation",
+      {
+        prompt,
+      }
+    );
 
     if (res.status !== 201)
       throw new Error("Something went wrong calling to image generation");

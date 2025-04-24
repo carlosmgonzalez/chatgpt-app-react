@@ -1,27 +1,34 @@
 import { createBrowserRouter, Navigate } from "react-router";
-// import {
-//   AssistantPage,
-//   AudioToTextPage,
-//   ImageGenerationPage,
-//   ImageTunningPage,
-//   OrthographyPage,
-//   ProsConsPage,
-//   ProsConsStreamPage,
-//   TextToAudioPage,
-//   TranslatePage,
-// } from "../pages";
+import {
+  AssistantPage,
+  AudioToTextPage,
+  ImageGenerationPage,
+  OrthographyPage,
+  ProsConsPage,
+  ProsConsStreamPage,
+  TextToAudioPage,
+  TranslatePage,
+  // ImageTunningPage,
+} from "../pages";
 import { DashboardLayout } from "../layouts/DashboardLayout";
-import { OrthographyPage } from "../pages/OrthographyPage";
-import { ProsConsPage } from "../pages/ProsConsPage";
-import { ProsConsStreamPage } from "../pages/ProsConsStreamPage";
-import { TranslatePage } from "../pages/TranslatePage";
-import { TextToAudioPage } from "../pages/TextToAudioPage";
-import { ImageGenerationPage } from "../pages/ImageGenerationPage";
-import { ImageTunningPage } from "../pages/ImageTunningPage";
-import { AudioToTextPage } from "../pages/AudioToTextPage";
-import { AssistantPage } from "../pages/AssistantPage";
+// import { OrthographyPage } from "../pages/OrthographyPage";
+// import { ProsConsPage } from "../pages/ProsConsPage";
+// import { ProsConsStreamPage } from "../pages/ProsConsStreamPage";
+// import { TranslatePage } from "../pages/TranslatePage";
+// import { TextToAudioPage } from "../pages/TextToAudioPage";
+// import { ImageGenerationPage } from "../pages/ImageGenerationPage";
+// import { ImageTunningPage } from "../pages/ImageTunningPage";
+// import { AudioToTextPage } from "../pages/AudioToTextPage";
+// import { AssistantPage } from "../pages/AssistantPage";
 
 export const menuRoutes = [
+  {
+    to: "/assistant",
+    icon: "fa-solid fa-user",
+    title: "Assistant",
+    description: "Assistant information",
+    component: <AssistantPage />,
+  },
   {
     to: "/orthography",
     icon: "fa-solid fa-spell-check",
@@ -58,20 +65,6 @@ export const menuRoutes = [
     component: <TextToAudioPage />,
   },
   {
-    to: "/image-generation",
-    icon: "fa-solid fa-image",
-    title: "Images",
-    description: "Generate images",
-    component: <ImageGenerationPage />,
-  },
-  {
-    to: "/image-tunning",
-    icon: "fa-solid fa-wand-magic",
-    title: "Edit images",
-    description: "Continuous generation",
-    component: <ImageTunningPage />,
-  },
-  {
     to: "/audio-to-text",
     icon: "fa-solid fa-comment-dots",
     title: "Audio to text",
@@ -79,12 +72,19 @@ export const menuRoutes = [
     component: <AudioToTextPage />,
   },
   {
-    to: "/assistant",
-    icon: "fa-solid fa-user",
-    title: "Assistant",
-    description: "Assistant information",
-    component: <AssistantPage />,
+    to: "/image-generation",
+    icon: "fa-solid fa-image",
+    title: "Images",
+    description: "Generate images",
+    component: <ImageGenerationPage />,
   },
+  // {
+  //   to: "/image-tunning",
+  //   icon: "fa-solid fa-wand-magic",
+  //   title: "Edit images",
+  //   description: "Continuous generation",
+  //   component: <ImageTunningPage />,
+  // },
 ];
 
 export const router = createBrowserRouter([

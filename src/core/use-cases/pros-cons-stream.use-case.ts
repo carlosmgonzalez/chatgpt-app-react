@@ -6,7 +6,7 @@ export const prosConsStreamUseCase = async (
   callback: (chunk: string) => void
 ) => {
   try {
-    const res = await fetch(`${API_URL}/pros-cons-stream`, {
+    const res = await fetch(`${API_URL}/chat-gpt/pros-cons-stream`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -46,9 +46,9 @@ export const MessageBoxSelect = ({
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row gap-2 p-3 rounded-md bg-black/50 w-full"
+      className="flex flex-row gap-2 p-2 rounded-md bg-black/50 w-full"
     >
-      <div className="grow">
+      <div className="grow items-center justify-center">
         <div className="relative w-full">
           <textarea
             placeholder={placeholder}
@@ -56,8 +56,8 @@ export const MessageBoxSelect = ({
             autoFocus
             name="message"
             rows={1}
-            className={`flex w-full min-h-[40px] max-h-[160px] border rounded-md border-neutral-800 text-neutral-400 
-              focus:outline-none focus:border-neutral-700 px-3 pb-2.5 pt-2 resize-none overflow-auto no-scrollbar`}
+            className={`flex w-full min-h-[40px] max-h-[160px] border-0 pt-2 text-neutral-400 
+              focus:outline-none focus:border-neutral-700 resize-none overflow-auto no-scrollbar`}
             autoComplete={disableCorrections ? "off" : "on"}
             autoCorrect={disableCorrections ? "off" : "on"}
             onChange={(e) => setMessage(e.target.value)}
@@ -67,7 +67,7 @@ export const MessageBoxSelect = ({
       </div>
       <select
         name="select"
-        className="bg-transparent border border-neutral-800 rounded-md focus:outline-none h-10 px-2"
+        className="bg-transparent border border-neutral-800 rounded-md pb-1 focus:outline-none h-10"
         value={selectedOption}
         onChange={(e) => setSelectedOption(e.target.value)}
       >

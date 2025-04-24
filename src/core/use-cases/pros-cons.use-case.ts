@@ -3,7 +3,7 @@ import { apiChatGpt } from "../api/api-chat-gpt";
 
 export const prosConsUseCase = async (prompt: string) => {
   try {
-    const res = await apiChatGpt.post<ProsConsResponse>("/pros-cons", {
+    const res = await apiChatGpt.post<ProsConsResponse>("/chat-gpt/pros-cons", {
       prompt,
     });
 

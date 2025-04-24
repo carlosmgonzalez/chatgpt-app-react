@@ -36,7 +36,7 @@
   }
 
   .chat-container {
-    @apply flex flex-col flex-auto shrink-0 rounded-md bg-white/5 h-full p-4;
+    @apply flex flex-col flex-auto shrink-0 rounded-md h-full p-2;
   }
 
   .chat-messages {
