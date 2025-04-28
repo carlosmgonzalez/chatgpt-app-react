@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
-import { GptMessage } from "../components/chat/GptMessage";
-import { MyMessage } from "../components/chat/MyMessage";
 import { MessageBox } from "../components/chat/MessageBox";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { prosConsStreamUseCase } from "../../core/use-cases/pros-cons-stream.use-case";
 import { ErrorAlert } from "../components/alerts/ErrorAlert";
+import { MessagesList } from "../components/chat/MessagesList";
 
 interface Message {
   text: string;
@@ -61,13 +60,9 @@ export const ProsConsStreamPage = () => {
       <div className="chat-container">
         {error && <ErrorAlert error={error} />}
         <div className="chat-messages">
-          {messages.map((message, i) =>
-            message.isGpt ? (
-              <GptMessage text={message.text} key={i} />
-            ) : (
-              <MyMessage text={message.text} key={i} />
-            )
-          )}
+          {messages.map((message, i) => (
+            <MessagesList message={message} key={i} />
+          ))}
           {isLoading && <TypingLoader />}
         </div>
       </div>

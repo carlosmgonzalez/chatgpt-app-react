@@ -32,7 +32,6 @@ export const MessageBox = ({
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (message.trim().length === 0) return;
-    console.log(message);
     onSendMessage(message);
     setMessage("");
   };

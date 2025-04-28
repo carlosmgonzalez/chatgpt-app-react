@@ -51,8 +51,11 @@ export const MessageBoxSelect = ({
 
   const handleSendMessage = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (message.trim().length === 0) return;
-    onSendMessage(message, selectedOption);
+    const option = options.find((opt) => opt.id === selectedOption)?.text;
+
+    if (message.trim().length === 0 || !option) return;
+
+    onSendMessage(message, option);
     setMessage("");
   };
 
@@ -92,7 +95,7 @@ export const MessageBoxSelect = ({
             onValueChange={setSelectedOption}
           >
             {options.map((option) => (
-              <DropdownMenuRadioItem value={option.id}>
+              <DropdownMenuRadioItem value={option.id} key={option.id}>
                 {option.text}
               </DropdownMenuRadioItem>
             ))}

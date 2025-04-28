@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { GptMessage } from "../components/chat/GptMessage";
-import { MyMessage } from "../components/chat/MyMessage";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { translateUseCase } from "../../core/use-cases/translate.use-case";
 import { MessageBoxSelect } from "../components/chat/MessageBoxSelect";
 import { ErrorAlert } from "../components/alerts/ErrorAlert";
+import { MessagesList } from "../components/chat/MessagesList";
 
 interface Message {
   text: string;
@@ -36,6 +35,8 @@ export const TranslatePage = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handlePost = async (text: string, selectedOption: string) => {
+    console.log({ selectedOption, text });
+
     setIsLoading(true);
     setMessages((prevMsg) => [...prevMsg, { isGpt: false, text }]);
 
@@ -66,13 +67,9 @@ export const TranslatePage = () => {
       <div className="chat-container">
         {error && <ErrorAlert error={error} />}
         <div className="chat-messages">
-          {messages.map((message, i) =>
-            message.isGpt ? (
-              <GptMessage text={message.text} key={i} />
-            ) : (
-              <MyMessage text={message.text} key={i} />
-            )
-          )}
+          {messages.map((message, i) => (
+            <MessagesList message={message} key={`${i + message.text}`} />
+          ))}
           {isLoading && <TypingLoader />}
         </div>
       </div>

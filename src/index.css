@@ -3,31 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@layer base {
-  /* html, body {
-    @apply bg-black text-white font-sans;
-  }
-
-  h1 {
-    @apply text-3xl font-bold mb-4;
-  }
-
-  p {
-    @apply mb-4;
-  }
-
-  ul {
-    @apply list-disc list-inside;
-  }
-
-  strong {
-    @apply font-bold text-indigo-400;
-  }
-
-  em {
-    @apply italic text-pink-500;
-  } */
-}
+@layer base {}
 
 @layer components {
   .chat-container-page {
@@ -35,20 +11,11 @@
   }
 
   .chat-container {
-    @apply flex flex-col h-full overflow-x-auto px-15;
+    @apply flex flex-col h-full overflow-x-auto px-5 sm:px-15;
   }
 
   .chat-messages {
     @apply grid grid-cols-12 gap-y-5 pb-10;
-  }
-
-  .custom-select {
-    @apply bg-transparent border border-neutral-800 rounded-md text-white focus:outline-none h-10 px-2;
-  }
-
-  .custom-select option:hover,
-  .custom-select option:focus {
-    @apply bg-neutral-800;
   }
 }
 
