@@ -4,6 +4,7 @@ import { MyMessage } from "../components/chat/MyMessage";
 import { MessageBox } from "../components/chat/MessageBox";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { prosConsUseCase } from "../../core/use-cases/pros-cons.use-case";
+import { ErrorAlert } from "../components/alerts/ErrorAlert";
 
 interface Message {
   text: string;
@@ -39,14 +40,10 @@ export const ProsConsPage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
-        {error && (
-          <div className="flex p-2 w-full rounded-md bg-red-300 justify-center items-center">
-            <p className="text-red-500 font-semibold m-0">{error}</p>
-          </div>
-        )}
-        <div className="grid grid-cols-12 gap-y-2">
+    <div className="chat-container-page">
+      <div className="chat-container">
+        {error && <ErrorAlert error={error} />}
+        <div className="chat-messages">
           {messages.map((message, i) =>
             message.isGpt ? (
               <GptMessage text={message.text} key={i} />
@@ -57,10 +54,12 @@ export const ProsConsPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <MessageBox
-        onSendMessage={handlePost}
-        placeholder="Message pros and cons"
-      />
+      <div className="px-10">
+        <MessageBox
+          onSendMessage={handlePost}
+          placeholder="Message pros and cons"
+        />
+      </div>
     </div>
   );
 };

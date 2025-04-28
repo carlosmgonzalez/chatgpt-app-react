@@ -4,6 +4,7 @@ import { TypingLoader } from "../components/chat/TypingLoader";
 import { MessageBoxFile } from "../components/chat/MessageBoxFile";
 import { audioToTextUseCase } from "../../core/use-cases/audio-to-text.use-case";
 import { GptMessage } from "../components/chat/GptMessage";
+import { ErrorAlert } from "../components/alerts/ErrorAlert";
 
 interface Message {
   text: string;
@@ -41,14 +42,10 @@ export const AudioToTextPage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
-        {error && (
-          <div className="flex p-2 w-full rounded-md bg-red-300 justify-center items-center">
-            <p className="text-red-500 font-semibold m-0">{error}</p>
-          </div>
-        )}
-        <div className="grid grid-cols-12 gap-y-2">
+    <div className="chat-container-page">
+      <div className="chat-container">
+        {error && <ErrorAlert error={error} />}
+        <div className="chat-messages">
           {messages.map((message, i) =>
             message.isGpt ? (
               <GptMessage text={message.text} key={i} />
@@ -59,11 +56,13 @@ export const AudioToTextPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <MessageBoxFile
-        onSendMessage={handlePost}
-        placeholder="Audio to message"
-        accept="audio/*"
-      />
+      <div className="px-10">
+        <MessageBoxFile
+          onSendMessage={handlePost}
+          placeholder="Audio to message"
+          accept="audio/*"
+        />
+      </div>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { MyMessage } from "../components/chat/MyMessage";
 import { TypingLoader } from "../components/chat/TypingLoader";
 import { translateUseCase } from "../../core/use-cases/translate.use-case";
 import { MessageBoxSelect } from "../components/chat/MessageBoxSelect";
+import { ErrorAlert } from "../components/alerts/ErrorAlert";
 
 interface Message {
   text: string;
@@ -61,14 +62,10 @@ export const TranslatePage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
-        {error && (
-          <div className="flex p-2 w-full rounded-md bg-red-300 justify-center items-center">
-            <p className="text-red-500 font-semibold m-0">{error}</p>
-          </div>
-        )}
-        <div className="grid grid-cols-12 gap-y-2">
+    <div className="chat-container-page">
+      <div className="chat-container">
+        {error && <ErrorAlert error={error} />}
+        <div className="chat-messages">
           {messages.map((message, i) =>
             message.isGpt ? (
               <GptMessage text={message.text} key={i} />
@@ -79,12 +76,14 @@ export const TranslatePage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <MessageBoxSelect
-        options={langOptions}
-        onSendMessage={handlePost}
-        placeholder="Translate message"
-        titleOption="Select a language"
-      />
+      <div className="px-10">
+        <MessageBoxSelect
+          options={langOptions}
+          onSendMessage={handlePost}
+          placeholder="Translate message"
+          titleOption="Select a language"
+        />
+      </div>
     </div>
   );
 };

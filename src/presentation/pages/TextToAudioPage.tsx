@@ -4,6 +4,7 @@ import { TypingLoader } from "../components/chat/TypingLoader";
 import { MessageBoxSelect } from "../components/chat/MessageBoxSelect";
 import { textToAudioUseCase } from "../../core/use-cases/text-to-audio.use-case";
 import { GptAudioMessage } from "../components/chat/GptAudioMessage";
+import { ErrorAlert } from "../components/alerts/ErrorAlert";
 
 interface Message {
   text: string;
@@ -54,14 +55,10 @@ export const TextToAudioPage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
-        {error && (
-          <div className="flex p-2 w-full rounded-md bg-red-300 justify-center items-center">
-            <p className="text-red-500 font-semibold m-0">{error}</p>
-          </div>
-        )}
-        <div className="grid grid-cols-12 gap-y-2">
+    <div className="chat-container-page">
+      <div className="chat-container">
+        {error && <ErrorAlert error={error} />}
+        <div className="chat-messages">
           {messages.map((message, i) =>
             message.isGpt ? (
               <GptAudioMessage audio={message.text} key={i} />
@@ -72,12 +69,14 @@ export const TextToAudioPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <MessageBoxSelect
-        options={options}
-        onSendMessage={handlePost}
-        placeholder="Message to audio"
-        titleOption="Select a voice"
-      />
+      <div className="px-10">
+        <MessageBoxSelect
+          options={options}
+          onSendMessage={handlePost}
+          placeholder="Message to audio"
+          titleOption="Select a voice"
+        />
+      </div>
     </div>
   );
 };

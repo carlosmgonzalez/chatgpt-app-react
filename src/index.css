@@ -30,20 +30,16 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl transition duration-200 ease-in-out hover:bg-indigo-700;
-  }
-
-  .btn-primary:disabled {
-    @apply opacity-50 cursor-not-allowed;
+  .chat-container-page {
+    @apply flex flex-col h-full pt-3;
   }
 
   .chat-container {
-    @apply flex flex-col flex-auto shrink-0 rounded-md h-full p-2;
+    @apply flex flex-col h-full overflow-x-auto px-15;
   }
 
   .chat-messages {
-    @apply flex flex-col h-full overflow-x-auto mb-4;
+    @apply grid grid-cols-12 gap-y-5 pb-10;
   }
 
   .custom-select {
