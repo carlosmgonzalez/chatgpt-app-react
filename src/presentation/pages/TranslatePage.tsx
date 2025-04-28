@@ -73,11 +73,11 @@ export const TranslatePage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
+      <div className="message-box-px">
         <MessageBoxSelect
           options={langOptions}
           onSendMessage={handlePost}
-          placeholder="Translate message"
+          placeholder="Message"
           titleOption="Select a language"
         />
       </div>

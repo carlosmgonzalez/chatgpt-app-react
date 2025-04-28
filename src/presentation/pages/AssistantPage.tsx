@@ -43,7 +43,7 @@ export const AssistantPage = () => {
         </div>
         {isLoading && <TypingLoader />}
       </div>
-      <div className="px-10">
+      <div className="message-box-px">
         <MessageBox onSendMessage={handlePost} placeholder="Message" />
       </div>
     </div>

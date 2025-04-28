@@ -67,7 +67,7 @@ export const ImageGenerationPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
+      <div className="message-box-px">
         <MessageBox onSendMessage={handlePost} placeholder="Message" />
       </div>
     </div>

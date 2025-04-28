@@ -17,6 +17,10 @@
   .chat-messages {
     @apply grid grid-cols-12 gap-y-5 pb-10;
   }
+
+  .message-box-px {
+    @apply px-3 md:px-10
+  }
 }
 
 @layer utilities {

@@ -69,11 +69,11 @@ export const TextToAudioPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
+      <div className="message-box-px">
         <MessageBoxSelect
           options={options}
           onSendMessage={handlePost}
-          placeholder="Message to audio"
+          placeholder="Message"
           titleOption="Select a voice"
         />
       </div>

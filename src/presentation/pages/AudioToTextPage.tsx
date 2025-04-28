@@ -56,10 +56,10 @@ export const AudioToTextPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
+      <div className="message-box-px">
         <MessageBoxFile
           onSendMessage={handlePost}
-          placeholder="Audio to message"
+          placeholder="Message"
           accept="audio/*"
         />
       </div>

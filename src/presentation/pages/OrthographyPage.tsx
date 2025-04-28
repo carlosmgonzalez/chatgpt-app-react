@@ -49,11 +49,8 @@ export const OrthographyPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
-        <MessageBox
-          onSendMessage={handlePost}
-          placeholder="Check your orthography "
-        />
+      <div className="message-box-px">
+        <MessageBox onSendMessage={handlePost} placeholder="Message" />
       </div>
     </div>
   );

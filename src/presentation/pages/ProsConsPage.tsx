@@ -49,11 +49,8 @@ export const ProsConsPage = () => {
           {isLoading && <TypingLoader />}
         </div>
       </div>
-      <div className="px-10">
-        <MessageBox
-          onSendMessage={handlePost}
-          placeholder="Message pros and cons"
-        />
+      <div className="message-box-px">
+        <MessageBox onSendMessage={handlePost} placeholder="Message" />
       </div>
     </div>
   );
