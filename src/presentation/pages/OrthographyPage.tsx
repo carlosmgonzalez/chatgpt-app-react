@@ -39,8 +39,8 @@ export const OrthographyPage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
+    <div className="flex flex-col h-full w-full">
+      <div className="h-full w-full">
         {error && (
           <div className="flex p-2 w-full rounded-md bg-red-300 justify-center items-center">
             <p className="text-red-500 font-semibold m-0">{error}</p>
@@ -61,14 +61,6 @@ export const OrthographyPage = () => {
         onSendMessage={handlePost}
         placeholder="Check your orthography "
       />
-      {/* <MessageBoxFile onSendMessage={handlePost} /> */}
-      {/* <MessageBoxSelect
-        onSendMessage={handlePost}
-        options={[
-          { id: "1", text: "hola" },
-          { id: "2", text: "mundo" },
-        ]}
-      /> */}
     </div>
   );
 };

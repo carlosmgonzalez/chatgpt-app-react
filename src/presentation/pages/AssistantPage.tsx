@@ -38,8 +38,8 @@ export const AssistantPage = () => {
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
+    <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full overflow-x-auto px-2">
         <button
           onClick={handleNewMessage}
           type="button"
@@ -53,7 +53,7 @@ export const AssistantPage = () => {
             <p className="text-red-500 font-semibold m-0">{error}</p>
           </div>
         )}
-        <div className="grid grid-cols-12 gap-y-2">
+        <div className="grid grid-cols-12 gap-y-2 mb-3">
           {state.messages.map((message, i) =>
             message.role === "assistant" ? (
               <GptMessage text={message.content.value} key={i} />
@@ -61,8 +61,8 @@ export const AssistantPage = () => {
               <MyMessage text={message.content.value} key={i} />
             )
           )}
-          {isLoading && <TypingLoader />}
         </div>
+        {isLoading && <TypingLoader />}
       </div>
       <MessageBox onSendMessage={handlePost} placeholder="Message" />
     </div>

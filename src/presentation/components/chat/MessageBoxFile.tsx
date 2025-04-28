@@ -1,3 +1,4 @@
+import { AudioLines, FileVolume, SendHorizonal } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 interface Props {
@@ -58,14 +59,14 @@ export const MessageBoxFile = ({
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row gap-2 p-2 rounded-md bg-black/50 w-full"
+      className="flex flex-row w-full gap-2 py-2 px-2 rounded-lg bg-neutral-300/50 mb-8"
     >
       <button
         onClick={onPress}
         type="button"
-        className="flex items-center justify-center self text-white hover:text-neutral-400 mr-2"
+        className="justify-center items-center rounded-full p-2 hover:bg-neutral-300/50 hover:opacity-90"
       >
-        <i className="fa-solid fa-paperclip text-xl" />
+        <FileVolume />
       </button>
       <input
         type="file"
@@ -82,7 +83,7 @@ export const MessageBoxFile = ({
             autoFocus
             name="message"
             rows={1}
-            className={`flex w-full min-h-[40px] max-h-[160px] border-0 pt-2 text-neutral-400 
+            className={`flex w-full min-h-[40px] max-h-[160px] border-0 pt-2 text-neutral-900 placeholder-neutral-600
               focus:outline-none focus:border-neutral-700 resize-none overflow-auto no-scrollbar`}
             autoComplete={disableCorrections ? "off" : "on"}
             autoCorrect={disableCorrections ? "off" : "on"}
@@ -92,9 +93,9 @@ export const MessageBoxFile = ({
         </div>
       </div>
       {selectedFile && (
-        <div className="justify-center items-center flex gap-2 p-1 border-1 rounded-md border-neutral-800">
-          <i className="fa-regular fa-floppy-disk" />
-          <span className="self-center">{`${selectedFile.name.slice(
+        <div className="justify-center items-center flex gap-2 rounded-lg px-2 py-1 bg-neutral-300/50">
+          <AudioLines />
+          <span className="self-center font-medium">{`${selectedFile.name.slice(
             0,
             15
           )}`}</span>
@@ -102,9 +103,9 @@ export const MessageBoxFile = ({
       )}
       <button
         type="submit"
-        className="justify-center items-center w-10 h-10 bg-neutral-200 font-bold rounded-full  hover:bg-neutral-400"
+        className="justify-center items-center rounded-full p-2 hover:bg-neutral-300/50 hover:opacity-90"
       >
-        <i className="fa-regular fa-paper-plane text-black" />
+        <SendHorizonal />
       </button>
     </form>
   );

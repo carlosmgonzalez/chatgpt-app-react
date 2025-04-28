@@ -1,8 +1,9 @@
 import { NavLink } from "react-router";
+import { LucideIcon } from "lucide-react";
 
 interface Option {
   to: string;
-  icon: string;
+  icon: LucideIcon;
   title: string;
   description: string;
 }
@@ -18,7 +19,7 @@ export const SidebarMenuItem = ({ option }: { option: Option }) => {
           : "flex justify-center items-center  hover:bg-gray-800 rounded-md p-2 transition-colors"
       }
     >
-      <i className={`${option.icon} text-2xl mr-4 text-shadow-neutral-700`}></i>
+      <option.icon className="text-2xl mr-4 text-shadow-neutral-700" />
       <div className="flex flex-col flex-1">
         <span className="text-white text-lg font-semibold">{option.title}</span>
         <span className="text-gray-400 text-sm">{option.description}</span>

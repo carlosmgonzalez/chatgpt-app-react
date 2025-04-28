@@ -8,18 +8,8 @@ import {
   ProsConsStreamPage,
   TextToAudioPage,
   TranslatePage,
-  // ImageTunningPage,
 } from "../pages";
 import { DashboardLayout } from "../layouts/DashboardLayout";
-// import { OrthographyPage } from "../pages/OrthographyPage";
-// import { ProsConsPage } from "../pages/ProsConsPage";
-// import { ProsConsStreamPage } from "../pages/ProsConsStreamPage";
-// import { TranslatePage } from "../pages/TranslatePage";
-// import { TextToAudioPage } from "../pages/TextToAudioPage";
-// import { ImageGenerationPage } from "../pages/ImageGenerationPage";
-// import { ImageTunningPage } from "../pages/ImageTunningPage";
-// import { AudioToTextPage } from "../pages/AudioToTextPage";
-// import { AssistantPage } from "../pages/AssistantPage";
 
 export const menuRoutes = [
   {
@@ -78,13 +68,6 @@ export const menuRoutes = [
     description: "Generate images",
     component: <ImageGenerationPage />,
   },
-  // {
-  //   to: "/image-tunning",
-  //   icon: "fa-solid fa-wand-magic",
-  //   title: "Edit images",
-  //   description: "Continuous generation",
-  //   component: <ImageTunningPage />,
-  // },
 ];
 
 export const router = createBrowserRouter([

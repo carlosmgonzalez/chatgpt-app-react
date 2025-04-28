@@ -21,7 +21,7 @@ export const AudioToTextPage = () => {
       ...prevMsg,
       {
         isGpt: false,
-        text: prompt.trim().length === 0 ? prompt : audioFile.name,
+        text: prompt.trim().length === 0 ? audioFile.name : prompt,
       },
     ]);
 

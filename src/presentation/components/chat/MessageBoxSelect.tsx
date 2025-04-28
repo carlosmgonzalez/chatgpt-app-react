@@ -1,3 +1,14 @@
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { SendHorizonal } from "lucide-react";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
 type Option = {
@@ -10,6 +21,7 @@ interface Props {
   placeholder?: string;
   disableCorrections?: boolean;
   options: Option[];
+  titleOption: string;
 }
 
 export const MessageBoxSelect = ({
@@ -17,6 +29,7 @@ export const MessageBoxSelect = ({
   placeholder,
   disableCorrections = false,
   options,
+  titleOption,
 }: Props) => {
   const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState(options[0].text);
@@ -46,7 +59,7 @@ export const MessageBoxSelect = ({
   return (
     <form
       onSubmit={handleSendMessage}
-      className="flex flex-row gap-2 p-2 rounded-md bg-black/50 w-full"
+      className="flex flex-row w-full items-center gap-2 pl-5 py-2 pr-2 rounded-lg bg-neutral-300/50 mb-8"
     >
       <div className="grow items-center justify-center">
         <div className="relative w-full">
@@ -56,7 +69,7 @@ export const MessageBoxSelect = ({
             autoFocus
             name="message"
             rows={1}
-            className={`flex w-full min-h-[40px] max-h-[160px] border-0 pt-2 text-neutral-400 
+            className={`flex w-full min-h-[40px] max-h-[160px] border-0 pt-2 text-neutral-900 placeholder-neutral-600
               focus:outline-none focus:border-neutral-700 resize-none overflow-auto no-scrollbar`}
             autoComplete={disableCorrections ? "off" : "on"}
             autoCorrect={disableCorrections ? "off" : "on"}
@@ -65,27 +78,32 @@ export const MessageBoxSelect = ({
           />
         </div>
       </div>
-      <select
-        name="select"
-        className="bg-transparent border border-neutral-800 rounded-md pb-1 focus:outline-none h-10"
-        value={selectedOption}
-        onChange={(e) => setSelectedOption(e.target.value)}
-      >
-        {options.map((option) => (
-          <option
-            className="bg-black checked:bg-black/50 text-white hover:text-black"
-            key={option.id}
-            value={option.text}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline">
+            {options.find((opt) => opt.id === selectedOption)?.text || "Open"}
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>{titleOption}</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup
+            value={selectedOption}
+            onValueChange={setSelectedOption}
           >
-            {option.text}
-          </option>
-        ))}
-      </select>
+            {options.map((option) => (
+              <DropdownMenuRadioItem value={option.id}>
+                {option.text}
+              </DropdownMenuRadioItem>
+            ))}
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
       <button
         type="submit"
-        className="justify-center items-center w-10 h-10 bg-neutral-200 font-bold rounded-full  hover:bg-neutral-400"
+        className="justify-center items-center rounded-full p-2 hover:bg-neutral-300/50 hover:opacity-90"
       >
-        <i className="fa-regular fa-paper-plane text-black" />
+        <SendHorizonal />
       </button>
     </form>
   );

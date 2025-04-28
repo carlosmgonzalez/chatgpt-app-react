@@ -76,6 +76,7 @@ export const TextToAudioPage = () => {
         options={options}
         onSendMessage={handlePost}
         placeholder="Message to audio"
+        titleOption="Select a voice"
       />
     </div>
   );

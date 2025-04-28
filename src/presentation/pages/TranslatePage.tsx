@@ -83,6 +83,7 @@ export const TranslatePage = () => {
         options={langOptions}
         onSendMessage={handlePost}
         placeholder="Translate message"
+        titleOption="Select a language"
       />
     </div>
   );
