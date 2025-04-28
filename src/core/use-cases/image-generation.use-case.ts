@@ -15,7 +15,7 @@ export const imageGenerationUseCase = async (prompt: string) => {
 
     return {
       ok: true,
-      url: res.data.url,
+      url: res.data.openAiUrl,
       alt: res.data.revised_prompt,
     };
   } catch (error) {
