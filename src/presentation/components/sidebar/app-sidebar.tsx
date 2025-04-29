@@ -7,7 +7,6 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarHeader,
-  useSidebar,
 } from "../../../components/ui/sidebar";
 
 import { NavLink, useLocation } from "react-router";
@@ -67,12 +66,6 @@ const items = [
 
 export const AppSidebar = () => {
   const { pathname } = useLocation();
-  const { setOpen, setOpenMobile } = useSidebar();
-
-  const closeSidemenu = () => {
-    setOpen(false);
-    setOpenMobile(false);
-  };
 
   return (
     <Sidebar>
@@ -86,7 +79,6 @@ export const AppSidebar = () => {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <NavLink
-                    onClick={closeSidemenu}
                     to={item.url}
                     className={`
                       flex flex-row gap-1 mb-1 hover:bg-neutral-300/50 px-3 py-2 rounded-lg
