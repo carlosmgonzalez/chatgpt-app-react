@@ -1,54 +1,36 @@
-# React + TypeScript + Vite
+<div align="center">
+<h1>
+    <em>Clon de ChatGPT</em>, minimalista con su backend hecho en NestJs
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- <p>
+Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz Jarocki</a>
+</p> -->
 
-Currently, two official plugins are available:
+</div>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<div align="center">
 
-## Expanding the ESLint configuration
+![React Badge](https://img.shields.io/badge/React-blue?logo=react&logoColor=fff&style=flat)
+![Vite Badge](https://img.shields.io/badge/Vite-yellow?logo=vite&logoColor=fff&style=flat)
+![Nest Badge](https://img.shields.io/badge/Nest-red?logo=nestjs&logoColor=fff&style=flat)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+</div>
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+<p>
+Este proyecto es un clon de ChatGPT desarrollado con React que ofrece múltiples funcionalidades de inteligencia artificial. Permite mantener conversaciones con un asistente virtual, generar imágenes a partir de descripciones, convertir audio a texto y texto a audio con diferentes voces, y realizar traducciones a múltiples idiomas. El frontend está construido con React y se comunica con un backend personalizado desarrollado en NestJS, el cual gestiona todas las solicitudes y se integra con la API de OpenAI para proporcionar estas capacidades.
+</p>
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<div align="center">
+  <img src="proyect-images/assistant-page.png" width="450" height="300"></img>
+  <img src="proyect-images/assistant-page.png" width="450" height="300"></img>
+  <img src="proyect-images/assistant-page.png" width="450" height="300"></img>
+  <img src="proyect-images/assistant-page.png" width="450" height="300"></img>
+</div>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- [**Astro**](https://es.react.dev/) - React (Vite).
+- [**NestJS**](https://nestjs.com/) - NestJS con express.
+- [**Typescript**](https://www.typescriptlang.org/) - JavaScript con sintaxis de tipado.
+- [**OpenAI**](https://openai.com/) - API de openAI.
