@@ -3,10 +3,6 @@
     <em>Clon de ChatGPT</em>, minimalista con su backend hecho en NestJs
 </h1>
 
-<!-- <p>
-Basado en el diseño de <a href="https://github.com/BartoszJarocki/cv">Bartosz Jarocki</a>
-</p> -->
-
 </div>
 
 <div align="center">
